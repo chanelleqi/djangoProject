@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Currency(models.Model):
     iso = models.CharField(max_length=3)
@@ -28,22 +29,12 @@ class Rates(models.Model):
     def __str__(self):
         return self.currency.iso + " " + self.x_currency + " " + str(self.rate)
 
-class Names(models.Model):
-    name = models.CharField(max_length=50)
-    #birthdate = models.DateField()
+class User1(models.Model):
+    name = models.CharField(max_length=255)
+    horoscope = models.CharField(max_length=255)
     def __repr__(self):
-        return self.name
-#return self.name + " " + str(self.birthdate)
+        return self.name + " " + self.horoscope
     def __str__(self):
-        return self.name
-#return self.name + " " + str(self.birthdate)
+        return self.name + " " + self.horoscope
 
-class ZodiacSign(models.Model):
-    sign = models.CharField(max_length=20)
-    symbol = models.CharField(max_length=20)
-    planet = models.CharField(max_length=20)
-    element = models.CharField(max_length=20)
-    quality = models.CharField(max_length=20)
 
-    def __str__(self):
-        return self.sign

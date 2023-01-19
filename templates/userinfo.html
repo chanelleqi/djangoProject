@@ -1,31 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Scraped Zodiac</title>
+    <title>User Information</title>
 </head>
 <body>
-    <h1>Scraped Zodiac Table</h1>
+    <h1>User Information</h1>
     <table>
-        {{ table|safe }}
+        <tr>
+            <th>Name</th>
+            <th>Horoscope</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.horoscope }}</td>
+        </tr>
+        {% endfor %}
     </table>
-
-<h1>Zodiac Signs</h1>
-<table>
- <tr>
- <th>Sign</th>
- <th>Symbol</th>
- <th>Planet</th>
- <th>Element</th>
- <th>Quality</th>
- </tr>
- {% for zodiac in zodiac_list %}
- <tr>
- <td>{{ zodiac.sign }}</td>
- <td>{{ zodiac.symbol }}</td>
- <td>{{ zodiac.planet }}</td>
- <td>{{ zodiac.element }}</td>
- <td>{{ zodiac.quality }}</td>
- </tr>
- {% endfor %}
-</table>
 </body>
+</html>

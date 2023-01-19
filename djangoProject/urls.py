@@ -18,12 +18,13 @@ from django.urls import path
 
 from myapp import views
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name="home"),
     path('maintenance',views.maintenance,name='maintenance'),
     path('currencies',views.view_currencies, name='currencies'),
-    path('userform',views.userform, name='userform'),
-    path('userinfo',views.view_Zodiac, name='userinfo'),
+    path('currency-selection',views.currency_selection,name="currency_selector"),
+    path('exchange_rate_info',views.exch_rate,name="exchange_rate_info"),
+    path('userform', views.submit_form, name='userform'),
+    path('userinfo', views.userinfo, name='userinfo'),
 ]
