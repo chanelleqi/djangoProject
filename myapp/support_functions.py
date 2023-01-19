@@ -1,5 +1,4 @@
 from urllib import request
-from pandas.plotting import table
 from myapp.models import Currency
 import requests
 from bs4 import BeautifulSoup
