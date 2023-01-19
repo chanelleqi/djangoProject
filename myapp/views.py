@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from myapp import support_functions
-from myapp.models import Currency, Names
+from myapp.models import Currency, Names, ZodiacSign
 
 
 # Create your views here.
@@ -13,9 +13,6 @@ def home(request):
     print(time)
     return render(request,"home.html",context=data)
 
-def maintenance(request):
-    data = dict()
-    return render(request,"maintenance.html",context=data)
 
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -46,21 +43,24 @@ def view_currencies(request):
 
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+
 def userform(request):
     data = dict()
     try:
         choice = request.GET['selection']
-        if choice == "names":
-            n_list = Names.objects.all()
-            print("Got n_list",len(n_list))
-            data['names'] = n_list
-            return HttpResponseRedirect(reverse('userform'))
+        if choice == "zodiac":
+            support_functions.add_zodiac(support_functions.scrape_zodiac())
+            z_list = ZodiacSign.objects.all()
+            print("Got z_list",len(z_list))
+            data['zodiac'] = z_list
+            return HttpResponseRedirect(reverse('userinfo'))
     except:
         pass
     return render(request,"userform.html",context=data)
 
-def view_userinfo(request):
+def view_Zodiac(request):
     data = dict()
-    n_list = Names.objects.all()
-    data['names'] = n_list
+    z_list = ZodiacSign.objects.all()
+    data['zodiac'] = z_list
     return render(request,'userinfo.html',context=data)
+

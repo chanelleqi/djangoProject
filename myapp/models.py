@@ -37,3 +37,13 @@ class Names(models.Model):
     def __str__(self):
         return self.name
 #return self.name + " " + str(self.birthdate)
+
+class ZodiacSign(models.Model):
+    sign = models.CharField(max_length=20)
+    symbol = models.CharField(max_length=20)
+    planet = models.CharField(max_length=20)
+    element = models.CharField(max_length=20)
+    quality = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.sign

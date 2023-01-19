@@ -1,5 +1,11 @@
+from urllib import request
+from pandas.plotting import table
 from myapp.models import Currency
+import requests
+from bs4 import BeautifulSoup
+from django.shortcuts import render, redirect
 from myapp.models import *
+
 
 def get_currency_list():
     currency_list = list()
@@ -16,30 +22,61 @@ def get_currency_list():
             detail = line.find_all('td')
             currency = detail[2].get_text().strip()
             iso = detail[3].get_text().strip()
-            if (currency,iso) in currency_list:
+            if (currency, iso) in currency_list:
                 continue
-            currency_list.append((currency,iso))
+            currency_list.append((currency, iso))
         except:
             continue
     return currency_list
+
 
 def add_currencies(currency_list):
     for currency in currency_list:
         currency_name = currency[0]
         currency_symbol = currency[1]
         try:
-            c= Currency.objects.get(iso=currency_symbol)
+            c = Currency.objects.get(iso=currency_symbol)
         except:
             c = Currency(long_name=currency_name, iso=currency_symbol)
-            c.save() #To test out the code, replace this by print(c)
+            c.save()  # To test out the code, replace this by print(c)
             print(c)
 
-def add_Name(name_list):
-    for name in name_list:
-        full_name = name[0]
+
+import requests
+from bs4 import BeautifulSoup
+
+
+def scrape_zodiac():
+    zodiac_list = []
+    import requests
+    from bs4 import BeautifulSoup
+    url = 'https://en.wikipedia.org/wiki/Zodiac#Twelve_signs'
+    page = requests.get(url)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    table = soup.find('table', {'class': 'wikitable'})
+    rows = table.find_all('tr')[1:]
+    for row in rows:
+        cols = row.find_all('td')
+        sign = cols[0].text.strip()
+        symbol = cols[1].text.strip()
+        planet = cols[2].text.strip()
+        element = cols[3].text.strip()
+        quality = cols[4].text.strip()
+        zodiac_list.append({"sign": sign, "symbol": symbol, "planet": planet, "element": element, "quality": quality})
+    return zodiac_list
+
+from .models import ZodiacSign
+
+def add_zodiac(zodiac_list):
+    for zodiac in zodiac_list:
+        sign = zodiac["sign"]
+        symbol = zodiac["symbol"]
+        planet = zodiac["planet"]
+        element = zodiac["element"]
+        quality = zodiac["quality"]
         try:
-            n = Names.objects.get(name=full_name)
+            z = ZodiacSign.objects.get(symbol=symbol)
         except:
-            n = Names(name=full_name)
-            #n.save() #To test out the code, replace this by print(c)
-            print(n)
+            z = ZodiacSign(sign=sign, symbol=symbol, planet=planet, element=element, quality=quality)
+        z.sign = sign
+        z.save()

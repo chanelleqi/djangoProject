@@ -1,22 +1,31 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Scraped Zodiac</title>
 </head>
 <body>
-<h1>USER NAME LIST</h1>
+    <h1>Scraped Zodiac Table</h1>
+    <table>
+        {{ table|safe }}
+    </table>
+
+<h1>Zodiac Signs</h1>
 <table>
-    <tr>
-        <th>Name</th>
-    </tr>
-    {% for n in name %}
-        <tr>
-            <td>{{ n.name }}</td>
-            <!--<td>{{ c.long_name }}</td> -->
-        </tr>
-    {% endfor %}
+ <tr>
+ <th>Sign</th>
+ <th>Symbol</th>
+ <th>Planet</th>
+ <th>Element</th>
+ <th>Quality</th>
+ </tr>
+ {% for zodiac in zodiac_list %}
+ <tr>
+ <td>{{ zodiac.sign }}</td>
+ <td>{{ zodiac.symbol }}</td>
+ <td>{{ zodiac.planet }}</td>
+ <td>{{ zodiac.element }}</td>
+ <td>{{ zodiac.quality }}</td>
+ </tr>
+ {% endfor %}
 </table>
 </body>
-</html>
