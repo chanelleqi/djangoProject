@@ -27,4 +27,5 @@ urlpatterns = [
     path('exchange_rate_info',views.exch_rate,name="exchange_rate_info"),
     path('userform', views.submit_form, name='userform'),
     path('userinfo', views.userinfo, name='userinfo'),
+    path('horoscopeinfo', views.horoscopeinfo, name='horoscopeinfo'),
 ]

@@ -1,12 +1,23 @@
-h1 {
- color: #993300;
+table {
+  width: 80%; /* Width of the table */
+  margin: 0 auto; /* Center the table on the page */
+  border-collapse: collapse; /* Remove the cell borders */
 }
 
-#footer { /* use with id = "footer" */
- display:inline-block;
- width:100%;
- height:1em;
- padding: 2em 0.25em;
- text-align: center;
- font-size: xx-small;
+th {
+  background-color: #4CAF50; /* Green background for the table header */
+  color: white; /* White text color for the table header */
+  text-align: left; /* Left align the text in the header */
+  padding: 12px; /* Add some padding to the header cells */
+  font-size: 18px; /* Increase the font size of the header */
+}
+
+td {
+  border: 1px solid #ddd; /* Add a border to the table cells */
+  padding: 12px; /* Add some padding to the cells */
+  text-align: left; /* Left align the text in the cells */
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2; /* Add a background color to every other row */
 }

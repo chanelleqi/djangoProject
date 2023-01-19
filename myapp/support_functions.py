@@ -40,3 +40,12 @@ def add_currencies(currency_list):
             c.save()  # To test out the code, replace this by print(c)
             print(c)
 
+
+from django.shortcuts import get_object_or_404
+from .models import User1
+def find_matching_user(name, horoscope):
+    current_user = get_object_or_404(User1, name=name, horoscope=horoscope)
+    matching_user = User1.objects.filter(horoscope=current_user.horoscope).exclude(name=current_user.name).first()
+    return matching_user
+
+

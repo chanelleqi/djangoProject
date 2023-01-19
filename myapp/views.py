@@ -84,3 +84,6 @@ def submit_form(request):
 def userinfo(request):
     users = User1.objects.all()
     return render(request, 'userinfo.html', {'users': users})
+
+def horoscopeinfo(request):
+    return render(request, 'horoscopeinfo.html')
