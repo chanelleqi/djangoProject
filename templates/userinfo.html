@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>USER NAME LIST</h1>
+<table>
+    <tr>
+        <th>Name</th>
+    </tr>
+    {% for n in name %}
+        <tr>
+            <td>{{ n.name }}</td>
+            <!--<td>{{ c.long_name }}</td> -->
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
