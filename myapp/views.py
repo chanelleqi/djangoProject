@@ -134,8 +134,8 @@ def horoscopeinfo(request):
     return render(request, 'horoscopeinfo.html')
 
 
-class AccountHolder:
-    pass
+# class AccountHolder:
+#     pass
 
 
 def register_new_user(request):
