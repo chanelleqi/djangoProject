@@ -30,7 +30,7 @@ body {
 }
 
 h2{
-        position: center;
+    position: center;
     color: #D8EEFB
     }
 
@@ -39,12 +39,17 @@ h2{
   background-color: #070C2F;
   max-width: 1000px;
   margin: auto;
+        color: #FFFFFF;
 }
 
 #deepdive {
-  background-color: #070C2F;
+    color:#FFFFFF
 }
-
+.container {
+  border-radius: 10px;
+  background-color: #070C2F;
+  padding: 20px;
+}
 
 </style>
 
@@ -57,8 +62,6 @@ h2{
 
 </head>
 <body>
-STATICFILES_DIRS = [os.path.join(BASE_DIR, “static")]
-
 
 <h1>All About Horoscopes!</h1>
 
@@ -66,6 +69,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, “static")]
 <br>
 <div class="beginning">
     <br>
+
+    <div class="container">
 <h2>Basic Information</h2>
 
 <p>Western astrology is largely horoscopic, a form of divination based on the construction of a horoscope for an exact moment, such as a person's birth as well as location (since time zones may or may not affect a person's birth chart), in which various cosmic bodies are said to have an influence. Astrology in western popular culture is often reduced to sun sign astrology, which considers only the individual's date of birth (i.e. the "position of the Sun" at that date).</p>
@@ -146,6 +151,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, “static")]
 </table>
 
 </ul>
+    </div>
     </div>
     </div>
 </body>
