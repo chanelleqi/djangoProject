@@ -5,7 +5,7 @@ from myapp.models import Currency, User1
 from django.urls import path, include
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+from myapp.models import Currency, AccountHolder
 
 # Create your views here.
 def home(request):
