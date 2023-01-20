@@ -40,7 +40,6 @@ class User1(models.Model):
 class AccountHolder(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     date_of_birth = models.DateField()
-    currencies_visited = models.ManyToManyField(Currency)
     def __str__(self):
         return self.user.username
 
