@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib import admin
 
 # Create your models here.
 class Currency(models.Model):
@@ -45,3 +46,15 @@ class AccountHolder(models.Model):
 
     def __repr__(self):
         return self.user.username
+
+class City(models.Model):
+    name = models.CharField(max_length=50)
+    wiki_link = models.URLField()
+    latitude = models.FloatField(null=False)
+    longitude = models.FloatField(null=False)
+
+    def __str__(self):
+        return self.name
+    def __repr__self(self):
+        return self.name + " " +str(self.latitude) + " " + str(self.longitude) + " " + \
+            str(self.longitude) + " " + self.wiki_link
