@@ -25,11 +25,9 @@ urlpatterns = [
     path('maintenance',views.maintenance,name='maintenance'),
     path('currencies',views.view_currencies, name='currencies'),
     path('currency-selection',views.currency_selection,name='currency_selector'),
-    #path('userform', views.submit_form, name='userform'),
-path('userform', views.match_horoscope, name='userform'),
+    path('userform', views.match_horoscope, name='userform'),
     path('userinfo', views.userinfo, name='userinfo'),
     path('horoscopeinfo', views.horoscopeinfo, name='horoscopeinfo'),
     path('register',views.register_new_user,name='register_user'),
     path('exchange_rate_info',views.exch_rate,name="exchange_rate_info"),
-    path('map',views.map,name="map"),
 ]

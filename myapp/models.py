@@ -70,7 +70,6 @@ class AccountHolder(models.Model):
     def __repr__(self):
         return self.user.username
 
-
 class City(models.Model):
     name = models.CharField(max_length=50)
     wiki_link = models.URLField()
