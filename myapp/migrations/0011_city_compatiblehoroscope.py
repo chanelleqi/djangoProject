@@ -11,16 +11,6 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='City',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
-                ('wiki_link', models.URLField()),
-                ('latitude', models.FloatField()),
-                ('longitude', models.FloatField()),
-            ],
-        ),
-        migrations.CreateModel(
             name='CompatibleHoroscope',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
