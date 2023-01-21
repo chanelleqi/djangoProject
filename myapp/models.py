@@ -29,7 +29,7 @@ class Holding(models.Model):
 
 class Rates(models.Model):
     currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
-    x_currency = models.CharField(max_length=3)
+    x_currency = models.CharField(max_length=4)
     rate = models.FloatField(default=1.0)
     last_update_time = models.DateTimeField()
 
