@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <div class="container">
 <head>
     <title>User Input Form</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -8,14 +9,22 @@
 
 </head>
 
-<h1>User Input Form</h1>
 
+<h1>User Input Form</h1>
+<br>
   <body>
     <form method="POST" action="{% url 'userform' %}">
       {% csrf_token %}
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
       <br>
+        <br>
+
+       <label for="instagram">Instagram Handle:</label>
+        <input type="text" id="instagram" name="instagram" required>
+      <br>
+        <br>
+
       <label for="horoscope">Select your horoscope:</label>
       <select id="horoscope" name="horoscope" required>
         <option value="Aquarius">Aquarius</option>
@@ -32,12 +41,13 @@
         <option value="Capricorn">Capricorn</option>
       </select>
       <br>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Find my match!">
+        <br>
     </form>
 
 <h1>
 {% if compatible_user %}
-    <p>Your compatible person's name is {{ compatible_user.name }} and their horoscope is {{ compatible_user.horoscope }}</p>
+    <p>Your compatible person's name is {{ compatible_user.name }} and their horoscope is {{ compatible_user.horoscope }}. Slide into their DMs on Instagram at: {{ compatible_user.instagram }}</p>
 {% endif %}
 </h1>
 
@@ -48,4 +58,6 @@
 </div>
 
   </body>
+
+    </div>
 {% endblock %}

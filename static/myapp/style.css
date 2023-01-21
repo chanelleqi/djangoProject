@@ -1,12 +1,25 @@
-
-
-.submit {
-  font-family: 'Helvetica';
-  font-size: 20px;
-  color: blueviolet
+input[type="submit"] {
+    border-radius: 50px; /* This will make the button round */
+    background-color: #0a3d57;
+    color: #fff;
+    margin-top: 20px;
+    height: 35px;
+    width: 250px;
+    outline-color: #055674;
 }
 
+#header{
+  background-color: #055674;
+}
 
+.large-font{
+  color: white;
+}
+
+h1 {
+    font-size: 20px; /* or you can use a specific font-size value, such as 16px */
+    font-family: 'Helvetica';
+}
 
 table {
   width: 80%; /* Width of the table */
@@ -15,7 +28,7 @@ table {
 }
 
 th {
-  background-color: #4CAF50; /* Green background for the table header */
+  background-color: #202a54; /* Green background for the table header */
   color: white; /* White text color for the table header */
   text-align: left; /* Left align the text in the header */
   padding: 12px; /* Add some padding to the header cells */
@@ -55,9 +68,10 @@ tr:nth-child(even) {
 }
 
 .menu-bar {
-  justify-content: space-between;
-  align-items: flex-end;
-  background-color: #D1AC4C;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #0a3d57;
   color: #fff;
   padding: 10px;
   font-weight: normal;
@@ -73,8 +87,8 @@ tr:nth-child(even) {
 
 
 body {
-  background-color: #055674;
-  color:;
+  background-color: white;
+  color:black;
 }
 
 #footer {
@@ -87,4 +101,14 @@ body {
  text-align: center;
  font-size: x-small;
   color: white;
+}
+
+.userformcontent h1, .userformcontent {
+    text-align: center;
+}
+
+.userformcontent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

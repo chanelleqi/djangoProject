@@ -96,7 +96,8 @@ def match_horoscope(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         horoscope = request.POST.get('horoscope')
-        user = User1(name=name, horoscope=horoscope)
+        instagram = request.POST.get('instagram')
+        user = User1(name=name, horoscope=horoscope, instagram=instagram)
         user.save()
         match = CompatibleHoroscope.objects.filter(horoscope1=horoscope).values('compatible_horoscope').first()
         if match:
@@ -105,4 +106,4 @@ def match_horoscope(request):
         else:
             return render(request, 'userform.html', {'message': 'No compatible user found'})
     else:
-        return render(request, 'userform.html', {'message': 'No compatible user found'})
+        return render(request, 'userform.html')

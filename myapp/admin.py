@@ -17,7 +17,7 @@ class CurrencyAdmin(admin.ModelAdmin):
 admin.site.register(Currency,CurrencyAdmin)
 
 class User1Admin(admin.ModelAdmin):
-    list_display = ('name', 'horoscope')
+    list_display = ('name', 'instagram','horoscope')
 
 admin.site.register(User1, User1Admin)
 
