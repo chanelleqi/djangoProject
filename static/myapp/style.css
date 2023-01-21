@@ -56,7 +56,7 @@ tr:nth-child(even) {
 
 .menu-bar {
   justify-content: space-between;
-  align-items: left;
+  align-items: flex-end;
   background-color: #D1AC4C;
   color: #fff;
   padding: 10px;
