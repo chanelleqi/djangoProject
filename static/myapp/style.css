@@ -81,12 +81,12 @@ td {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #0a3d57;
+  background-color: #12334B;
   color: #fff;
   padding: 10px;
   font-weight: normal;
   font-family: "Baskerville Old Face";
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .menu-bar a i {
