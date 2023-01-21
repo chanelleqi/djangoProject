@@ -2,7 +2,7 @@ import folium as folium
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from myapp import support_functions
-from myapp.models import Currency, User1, CompatibleHoroscope, City
+from myapp.models import Currency, User1, CompatibleHoroscope
 from django.urls import path, include
 from django.http import HttpResponseRedirect
 from django.urls import reverse
