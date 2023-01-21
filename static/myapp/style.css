@@ -9,7 +9,8 @@ input[type="submit"] {
 }
 
 #header{
-  background-color: #055674;
+    background-image:url("menubarbackground.png");
+    background-size:cover;
 }
 
 .large-font{
@@ -18,7 +19,20 @@ input[type="submit"] {
 
 h1 {
     font-size: 20px; /* or you can use a specific font-size value, such as 16px */
-    font-family: 'Helvetica';
+    font-family: 'Baskerville Old Face';
+}
+
+.jumbotron{
+color: white;
+  background-image: url("https://images.unsplash.com/photo-1528722828814-77b9b83aafb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background-size: cover;
+}
+
+h3{font-family: "Baskerville Old Face";
+  font-weight: bolder;}
+
+.jumbotron p.welcome{
+    font-size: xxx-large; font-weight: bolder; font-family: "Baskerville Old Face";
 }
 
 table {
@@ -28,7 +42,7 @@ table {
 }
 
 th {
-  background-color: #202a54; /* Green background for the table header */
+  background-color: #202a54;
   color: white; /* White text color for the table header */
   text-align: left; /* Left align the text in the header */
   padding: 12px; /* Add some padding to the header cells */
@@ -39,10 +53,6 @@ td {
   border: 1px solid #ddd; /* Add a border to the table cells */
   padding: 12px; /* Add some padding to the cells */
   text-align: left; /* Left align the text in the cells */
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2; /* Add a background color to every other row */
 }
 
 /* The navbar container */
@@ -75,8 +85,12 @@ tr:nth-child(even) {
   color: #fff;
   padding: 10px;
   font-weight: normal;
-  font-family: helvetica;
-  font-size: medium;
+  font-family: "Baskerville Old Face";
+  font-size: 25px;
+}
+
+.menu-bar a i {
+  margin-right: 10px;
 }
 
 .menu-bar a {
@@ -93,14 +107,14 @@ body {
 
 #footer {
   display:inline-block;
-  position:absolute;
   bottom: 0;
  width:100%;
  height:1em;
- padding: 2em 0.25em;
+ padding: 3em 0.25em;
  text-align: center;
- font-size: x-small;
-  color: white;
+ font-size: small;
+    font-family: "Baskerville Old Face";
+  color: black;
 }
 
 .userformcontent h1, .userformcontent {
