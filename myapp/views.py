@@ -2,7 +2,7 @@ import folium as folium
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from myapp import support_functions
-from myapp.models import Currency, User1
+from myapp.models import Currency, User1, CompatibleHoroscope
 from django.urls import path, include
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -69,8 +69,9 @@ def exch_rate(request):
     return render(request,"exchange_detail.html",data)
 
 def map(request):
-    m = folium.Map()
+    m = folium.Map()  # add import folium at the top of views.py
     data = dict()
+
     try:
         request.GET['reset']
         print("resetting")
@@ -79,6 +80,53 @@ def map(request):
         return render(request, "map.html", context=data)
     except:
         pass
+
+    try:
+        request.GET['city_list']
+        number_of_cities = int(request.GET['number_of_cities'])
+        visiting_cities = list()
+        for i in range(number_of_cities):
+            name = "city" + str(i)
+            city_name = request.GET[name]
+            visiting_cities.append(city_name)
+        m = support_functions.add_markers(m, visiting_cities)
+        data['visiting_cities'] = visiting_cities
+        m = m._repr_html_
+        data['m'] = m
+        return render(request, "map.html", data)
+    except:
+        pass
+
+
+    try:
+        number_of_cities = int(request.GET["number_of_cities"])
+        if number_of_cities > 0:
+            names = list()
+            for i in range(number_of_cities):
+                names.append("city" + str(i))
+            data['names'] = names
+            data['number_of_cities'] = number_of_cities
+        m = m._repr_html_
+        data['m'] = m
+    except:
+        data['number_of_cities'] = 0
+        m = m._repr_html_
+        data['m'] = m
+    return render(request, "map.html", context=data)
+
+
+
+
+    try:
+        request.GET['reset']
+        print("resetting")
+        data['number_of_cities'] = 0
+        data['m'] = m._repr_html_
+        return render(request, "map.html", context=data)
+    except:
+        pass
+
+
     try:
         request.GET['city_list']
         number_of_cities = int(request.GET['number_of_cities'])
@@ -94,6 +142,7 @@ def map(request):
         return render(request, "map.html", data)
     except:
         pass
+
 
     try:
         number_of_cities = int(request.GET["number_of_cities"])
@@ -111,19 +160,7 @@ def map(request):
         data['m'] = m
     return render(request,"map.html",context=data)
 
-def submit_form(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        horoscope = request.POST.get('horoscope')
-        if name and horoscope:
-            # Create a new User1 object and save to the database
-            user = User1(name=name, horoscope=horoscope)
-            user.save()
-            return render(request, 'userform.html')
-        else:
-            return redirect('maintenance')
-    else:
-        return render(request, 'userform.html')
+
 
 
 def userinfo(request):
@@ -132,11 +169,6 @@ def userinfo(request):
 
 def horoscopeinfo(request):
     return render(request, 'horoscopeinfo.html')
-
-
-# class AccountHolder:
-#     pass
-
 
 def register_new_user(request):
     context = dict()
@@ -151,3 +183,19 @@ def register_new_user(request):
         form = UserCreationForm()
         context['form'] = form
         return render(request, "registration/register.html", context)
+
+
+def match_horoscope(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        horoscope = request.POST.get('horoscope')
+        user = User1(name=name, horoscope=horoscope)
+        user.save()
+        match = CompatibleHoroscope.objects.filter(horoscope1=horoscope).values('compatible_horoscope').first()
+        if match:
+            compatible_user = User1.objects.filter(horoscope=match['compatible_horoscope']).first()
+            return render(request, 'userform.html', {'compatible_user': compatible_user})
+        else:
+            return render(request, 'userform.html', {'message': 'No compatible user found'})
+    else:
+        return render(request, 'userform.html', {'message': 'No compatible user found'})

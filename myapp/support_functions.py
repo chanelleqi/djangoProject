@@ -4,6 +4,8 @@ import requests
 from bs4 import BeautifulSoup
 from myapp.models import *
 from django.shortcuts import render, redirect
+import folium as folium
+
 
 
 def get_currency_list():
@@ -139,11 +141,11 @@ def add_markers(m,visiting_cities):
             marker = folium.Marker((lat,lon),icon=icon,popup=popup)
             marker.add_to(m)
             lat_lon_list.append([lat,lon])
-            #Add line. First rearrange lat lons by longitude
-            # lat_lon_list.sort(key=lambda x: x[1])
-            # line_string = list()
-            # for i in range(len(lat_lon_list)-1):
-            # line_string.append([lat_lon_list[i],lat_lon_list[i+1]])
-            # line = folium.PolyLine(line_string,color="red",weight=5)
-            # line.add_to(m)
-            # return m
+        #Add line. First rearrange lat lons by longitude
+        lat_lon_list.sort(key=lambda x: x[1])
+        line_string = list()
+        for i in range(len(lat_lon_list)-1):
+            line_string.append([lat_lon_list[i],lat_lon_list[i+1]])
+        line = folium.PolyLine(line_string,color="red",weight=5)
+        line.add_to(m)
+        return m

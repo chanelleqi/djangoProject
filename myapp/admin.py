@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib import admin
 # Register your models here.
-from myapp.models import Currency, Holding
+from myapp.models import Currency, Holding, CompatibleHoroscope
 from django.contrib import admin
 from .models import User1
 class HoldingInLine(admin.TabularInline):
@@ -20,3 +20,8 @@ class User1Admin(admin.ModelAdmin):
     list_display = ('name', 'horoscope')
 
 admin.site.register(User1, User1Admin)
+
+class CompatibleHoroscopeAdmin(admin.ModelAdmin):
+    list_display = ('horoscope1','compatible_horoscope')
+
+admin.site.register(CompatibleHoroscope, CompatibleHoroscopeAdmin)

@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+
 <head>
     <title>User Input Form</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+
+
 </head>
 
 <h1>User Input Form</h1>
@@ -31,5 +34,18 @@
       <br>
       <input type="submit" value="Submit">
     </form>
+
+<h1>
+{% if compatible_user %}
+    <p>Your compatible person's name is {{ compatible_user.name }} and their horoscope is {{ compatible_user.horoscope }}</p>
+{% endif %}
+</h1>
+
+    <div>
+{% if message %}
+    <p>{{ message }}</p>
+{% endif %}
+</div>
+
   </body>
 {% endblock %}
